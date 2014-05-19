@@ -1,0 +1,5 @@
+Ratcoin-qt usr/bin
+share/pixmaps/bitcoin32.xpm usr/share/pixmaps
+share/pixmaps/bitcoin80.xpm usr/share/pixmaps
+debian/Ratcoin-qt.desktop usr/share/applications
+debian/Ratcoin-qt.protocol usr/share/kde4/services/

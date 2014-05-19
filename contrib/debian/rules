@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+#DEB_MAKE_CHECK_TARGET = test_bitcoin
+#build/bitcoind::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_bitcoin)
+
+DEB_INSTALL_EXAMPLES_Ratcoind += debian/examples/*
+DEB_INSTALL_MANPAGES_Ratcoind += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_build:
+	cd src; $(MAKE) -f makefile.unix Ratcoind
+	$(MAKE)
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f Ratcoin-qt; fi
+	cd src; $(MAKE) -f makefile.unix clean
+
+override_dh_auto_configure:
+	qmake Ratcoin-qt.pro USE_QRCODE=1
+
+override_dh_auto_test:
+	cd src; $(MAKE) -f makefile.unix test_Ratcoin
+	src/test_Ratcoin
+
+# Ensure wrapper is set executable
+binary-post-install/Ratcoind:
+	chmod +x $(cdbs_curdestdir)usr/bin/Ratcoind
+binary-post-install/Ratcoin-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/Ratcoin-qt

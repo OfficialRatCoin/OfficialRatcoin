@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ratcoin
+Comment=Ratcoin P2P Cryptocurrency
+Comment[fr]=Ratcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Ratcoin, eşten eşe kriptografik sanal para birimi
+Comment[es]=Ratcoin, una criptomoneda P2P
+Exec=/usr/bin/Ratcoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/Ratcoin;
+Categories=Office;
